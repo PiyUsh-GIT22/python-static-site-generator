@@ -1,10 +1,13 @@
 import re
-from yaml import load, FullLoader
 from collections.abc import Mapping
+from yaml import load, FullLoader
+
+
 
 class Contet(Mapping):
     __delimeter = r"^(?:-|\+){3}\s*$"
     __regex = re.compile(__delimiter,re.MULTILINE)
+
     @classmethod
     def load(cls, string):
         _, fm, content = cls.__regex.split(string, 2)
